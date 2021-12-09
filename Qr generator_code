@@ -1,0 +1,17 @@
+import qrcode
+from qrcode.constants import ERROR_CORRECT_L
+
+qr = qrcode.QRCode(
+    version = 3,
+    error_correction=ERROR_CORRECT_L,
+    box_size=3,
+    border=5
+)
+
+lien = input("--inserez un lien : ")
+
+qr.add_data(lien)
+qr.make(fit=True)
+
+image = qr.make_image(fill_color='black', back_color="white")
+image.save('qrcode.png')
